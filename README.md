@@ -56,7 +56,11 @@ Finetune with "nearest" upsample may recover the accuracy.
 
 Here we convert from the official model directly.
 
+## Train 
+
+1. refer to:https://github.com/chenjun2hao/DDRNet.pytorch
+2. generate wts model with getwts.py
+
 ## Train customer data
 
-
-
+wirte your own dataset and finetune the model with cityscape.
