@@ -62,5 +62,5 @@ Here we convert from the official model directly.
 2. generate wts model with getwts.py
 
 ## Train customer data
-
+https://github.com/midasklr/DDRNet.Pytorch
 wirte your own dataset and finetune the model with cityscape.
