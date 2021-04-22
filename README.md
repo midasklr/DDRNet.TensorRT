@@ -44,7 +44,7 @@ Test on RTX2070
 | Pytorch-aug    | （3,1024,1024） | 107  |
 | Pytorch-no-aug | （3,1024,1024） | 108  |
 | TensorRT-FP32  | （3,1024,1024） | 117  |
-| TensorRT-FP32  | （3,1024,1024） | 215  |
+| TensorRT-FP16  | （3,1024,1024） | 215  |
 
 Pytorch-aug means augment=True.
 
