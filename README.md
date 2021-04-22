@@ -7,8 +7,9 @@ TensorRT implementation of the official [DDRNet](https://github.com/ydhongHIT/DD
 </p>
 
 [DDRNet-23-slim](https://paperswithcode.com/paper/deep-dual-resolution-networks-for-real-time) outperform other light weight segmentation method,[see](https://paperswithcode.com/sota/real-time-semantic-segmentation-on-cityscapes)
-
-![](./results/Screenshot from 2021-04-21 19-25-48.png)
+<p align="center">
+<img src="./results/Screenshot from 2021-04-21 19-25-48.png">
+</p>
 
 
 
