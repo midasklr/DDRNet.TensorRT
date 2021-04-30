@@ -34,7 +34,14 @@ TensorRT implementation of the official [DDRNet](https://github.com/ydhongHIT/DD
   ./ddrnet -d  ../images // deserialize plan file and run inference, the images in samples will be processed.
   ```
 
+for INT8 support:
 
+```
+#define USE_INT8  // comment out this if want to use INT8
+//#define USE_FP16  // comment out this if want to use FP32
+```
+
+mkdir "calib" and put around 1k images(cityscape val/test images) into folder "calib".
 
 ## FPS
 
@@ -46,6 +53,7 @@ Test on RTX2070
 | Pytorch-no-aug | （3,1024,1024） | 108  |
 | TensorRT-FP32  | （3,1024,1024） | 117  |
 | TensorRT-FP16  | （3,1024,1024） | 215  |
+| TensorRT-INT8  | （3,1024,1024） | 232  |
 
 Pytorch-aug means augment=True.
 

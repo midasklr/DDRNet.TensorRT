@@ -4,7 +4,10 @@
 #include "logging.h"
 #include "common.hpp"
 #include <math.h>
+#include "calibrator.h"
 
+
+//#define USE_INT8  // comment out this if want to use INT8
 #define USE_FP16  // comment out this if want to use FP32
 #define DEVICE 0  // GPU id
 static const int INPUT_H = 1024;
@@ -165,7 +168,14 @@ ICudaEngine* createEngine(unsigned int maxBatchSize, IBuilder* builder, IBuilder
     // Build engine
     builder->setMaxBatchSize(maxBatchSize);
     config->setMaxWorkspaceSize(16 * (1 << 20));  // 16MB
-#ifdef USE_FP16
+
+#if defined(USE_INT8)
+    std::cout << "Your platform support int8: " << (builder->platformHasFastInt8() ? "true" : "false") << std::endl;
+    assert(builder->platformHasFastInt8());
+    config->setFlag(BuilderFlag::kINT8);
+    Int8EntropyCalibrator2 *calibrator = new Int8EntropyCalibrator2(1, INPUT_W, INPUT_H, "../calib/", "int8calib.table", INPUT_BLOB_NAME);
+    config->setInt8Calibrator(calibrator);
+#elif defined(USE_FP16)
     config->setFlag(BuilderFlag::kFP16);
 #endif
     std::cout << "Building engine, please wait for a while..." << std::endl;
@@ -314,9 +324,7 @@ int main(int argc, char** argv) {
         float* prob = new float[ 19* OUT_MAP_H* OUT_MAP_W];
         // Run inference
         auto start = std::chrono::system_clock::now();
-
         doInference(*context, data, prob);
-
         auto end = std::chrono::system_clock::now();
         std::cout << std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() << "ms" << std::endl;
 
