@@ -16,6 +16,7 @@ TensorRT implementation of the official [DDRNet](https://github.com/ydhongHIT/DD
 ## Compile&Run
 
 * 1. get model.wts
+ 
   Convert pytorch model to wts model using getwts.py, or download the wts [model](url: https://pan.baidu.com/s/1Cm1A2mq6RxCFhUJrOJBSrw  ;passworld: p6hy ) convert from official implementation.
 
   note  that we do not use extral segmentation head while inference(set augment=False in https://github.com/ydhongHIT/DDRNet/blob/76a875084afdc7dedd20e2c2bdc0a93f8f481e81/segmentation/DDRNet_23_slim.py#L345).
